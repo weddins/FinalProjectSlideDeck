@@ -1,7 +1,7 @@
 Final Presentation
 ========================================================
 author: Bill Eddins
-date: 2016-03-21
+date: 2016-03-24
 
 This report presents an analysis of internet text files including blogs, news feeds and twitters to for a course in machine learning. See this link for more information [Data Science Specialization](https://www.coursera.org/specialization/jhudatascience/1?utm_source=catalog).  
 
@@ -11,7 +11,7 @@ Building the Shiny App
 ========================================================
 The Shiny App was built in two phases. The first phase resulted in an R app named `CreateTrigrams.R` that builds a list of trigrams and a second R app named `AnalyzeTextTopics.R` that builds a list of popular words. The second phase resulted in two apps: server.R and app.R. 
 
-`CreateTrigrams.R` has the most sophisticated code. It was be examined for optimization since it reads/writes text files. Other code preprocesses the text by removing email characters, removing numbers, converting text to lower case, and removing profane words. A special routine, `triGramTokenizer`, is created to control the functioning of the `TermDocumentMatix` statement. Finally, a file named `FreqTerms.csv` is generated to be used by the shiny app.  
+`CreateTrigrams.R` has the most sophisticated code. It was analyzed for optimization since it reads/writes text files. Other code preprocesses the text by removing email characters, removing numbers, converting text to lower case, and removing profane words. A special routine, `triGramTokenizer`, is created to control the functioning of the `TermDocumentMatix` statement. Finally, a file named `FreqTerms.csv` is generated to be used by the shiny app.  
 
 Toward a Smarter Shiny App
 ========================================================
@@ -28,11 +28,11 @@ Several R packages used for profiling were examined to find bottlenecks. `Profil
 
 ![alt text](saveSubsetTiming.png)
 
-There are two functions named `saveSubset` and `saveSubsetRODBC` which were profilled using `microbenchmark`.  `saveSubset` is written in base R. It took on aveage 45.2 microseconds to execute. `saveSubsetRODBC` uses the RDOBC package and MS SQL Server. It took on average 15.4 micoseconds to execute. Almost 3 times faster!
+Two functions named `saveSubset` and `saveSubsetRODBC` were profilled using `microbenchmark`.  `saveSubset` is written in base R. It took on aveage 45.2 microseconds to execute. `saveSubsetRODBC` uses the RDOBC package and MS SQL Server. It took on average 15.4 micoseconds to execute. Almost 3 times faster!
 
 In Summary
 ========================================================
-R code segments were written to create and analyze internet text. If SwiftKey is interested, an R package can be made to analyze internet text and to optimize operations. 
+R code segments were written to create and analyze internet text. If SwiftKey is interested, an R package can be made to analyze internet text and to optimize operations. Following are R code units.
 
 - CreateTrigrams.R created a list of trigrams
 - The Shiny app is composed of the following
